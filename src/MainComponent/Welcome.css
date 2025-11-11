@@ -1,0 +1,110 @@
+/* ---------- WELCOME PAGE (Full Screen Black & Gold) ---------- */
+.welcome {
+  height: 100vh;
+  width: 100vw;
+  background-color: #000;
+  color: gold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Background Glow Animation */
+.welcome::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(255, 215, 0, 0.1),
+    rgba(255, 215, 0, 0.4),
+    rgba(255, 215, 0, 0.1)
+  );
+  animation: spinGlow 14s linear infinite;
+  z-index: 0;
+}
+
+@keyframes spinGlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Welcome Box */
+.welcome-section {
+  text-align: center;
+  background-color: rgba(17, 17, 17, 0.9);
+  border: 1px solid gold;
+  padding: 4rem 6rem;
+  border-radius: 20px;
+  box-shadow: 0 0 40px rgba(255, 215, 0, 0.4);
+  z-index: 1;
+  transition: all 0.4s ease;
+}
+
+.welcome-section:hover {
+  box-shadow: 0 0 55px rgba(255, 215, 0, 0.8);
+  transform: translateY(-6px);
+}
+
+/* Heading */
+.welcome-section h1 {
+  font-size: 2.4rem;
+  color: gold;
+  text-shadow: 0 0 20px gold;
+  font-weight: 800;
+  margin-bottom: 1.2rem;
+}
+
+/* Subtext */
+.welcome-section p {
+  font-size: 1.1rem;
+  color: #ffd700;
+  opacity: 0.9;
+  margin-bottom: 2rem;
+}
+
+/* Button */
+.start-btn {
+  background-color: gold;
+  color: #000;
+  border: none;
+  border-radius: 10px;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+.start-btn:hover {
+  background-color: #ffcc00;
+  transform: scale(1.07);
+  box-shadow: 0 0 30px gold;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .welcome-section {
+    width: 90%;
+    padding: 3rem;
+  }
+
+  .welcome-section h1 {
+    font-size: 2rem;
+  }
+
+  .welcome-section p {
+    font-size: 1rem;
+  }
+}

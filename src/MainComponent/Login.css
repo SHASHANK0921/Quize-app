@@ -1,0 +1,150 @@
+/* ---------- LOGIN PAGE (Full Screen Black & Gold) ---------- */
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #000;
+  font-family: "Poppins", sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Background gold glow */
+.login::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(255, 215, 0, 0.1),
+    rgba(255, 215, 0, 0.4),
+    rgba(255, 215, 0, 0.1)
+  );
+  animation: rotateGlow 15s linear infinite;
+  z-index: 0;
+}
+
+@keyframes rotateGlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Form Card */
+.login-form {
+  position: relative;
+  background-color: rgba(17, 17, 17, 0.95);
+  padding: 3rem;
+  border-radius: 18px;
+  border: 1px solid gold;
+  box-shadow: 0 0 35px rgba(255, 215, 0, 0.4);
+  width: 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: gold;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.login-form:hover {
+  box-shadow: 0 0 50px rgba(255, 215, 0, 0.8);
+  transform: translateY(-5px);
+}
+
+/* Heading */
+.login-form h2 {
+  text-align: center;
+  color: gold;
+  font-weight: 700;
+  font-size: 1.8rem;
+  text-shadow: 0 0 15px gold;
+}
+
+/* Inputs */
+.login-form input[type="email"],
+.login-form input[type="password"] {
+  padding: 0.8rem 1rem;
+  border: 1px solid gold;
+  background: transparent;
+  color: gold;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.login-form input:focus {
+  border-color: #ffd700;
+  box-shadow: 0 0 10px gold;
+}
+
+.login-form input::placeholder {
+  color: #b8860b;
+}
+
+/* Button */
+.login-form button {
+  background-color: gold;
+  color: #000;
+  border: none;
+  border-radius: 10px;
+  padding: 0.9rem;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.login-form button:hover {
+  transform: scale(1.05);
+  background-color: #ffcc00;
+  box-shadow: 0 0 25px gold;
+}
+
+.login-form button:disabled {
+  background-color: #444;
+  color: #999;
+}
+
+/* Message + Link */
+.message {
+  text-align: center;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+.message.success {
+  color: #00ff88;
+}
+.message.warning {
+  color: #ff4444;
+}
+
+.signup-link {
+  text-align: center;
+  color: gold;
+}
+.signup-link a {
+  color: gold;
+  font-weight: 600;
+  text-decoration: none;
+}
+.signup-link a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .login-form {
+    width: 90%;
+    padding: 2rem;
+  }
+}
