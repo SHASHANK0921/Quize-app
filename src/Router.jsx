@@ -4,6 +4,7 @@ import {
   RouterProvider,
   Navigate,
 } from "react-router-dom";
+
 import Home from "./MainComponent/Home.jsx";
 import Welcome from "./MainComponent/Welcome.jsx";
 import Signup from "./MainComponent/Signup.jsx";
@@ -22,26 +23,48 @@ const RedirectIfAuth = ({ children }) => {
   return loggedInUser ? <Navigate to="/quiz" replace /> : children;
 };
 
-const router = createBrowserRouter([
+// ✅ Router configuration (with basename for GitHub Pages)
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <Home />,
+      children: [
+        { index: true, element: <Welcome /> },
+        { path: "home", element: <Welcome /> },
+        {
+          path: "signup",
+          element: (
+            <RedirectIfAuth>
+              <Signup />
+            </RedirectIfAuth>
+          ),
+        },
+        {
+          path: "login",
+          element: (
+            <RedirectIfAuth>
+              <Login />
+            </RedirectIfAuth>
+          ),
+        },
+        {
+          path: "quiz",
+          element: (
+            <RequireAuth>
+              <Quze />
+            </RequireAuth>
+          ),
+        },
+        // ✅ Optional: Fallback for unknown routes
+        { path: "*", element: <h1>404 - Page Not Found</h1> },
+      ],
+    },
+  ],
   {
-    path: "/",
-    element: <Home />,
-    children: [
-      { index: true, element: <Welcome /> },
-      { path: "home", element: <Welcome /> },
-      { path: "signup", element: <RedirectIfAuth><Signup /></RedirectIfAuth> },
-      { path: "login", element: <RedirectIfAuth><Login /></RedirectIfAuth> },
-      {
-        path: "quiz",
-        element: (
-          <RequireAuth>
-            <Quze />
-          </RequireAuth>
-        ),
-      },
-    ],
-  },
-]);
+    basename: "/quiz-app", // 👈 critical for GitHub Pages
+  }
+);
 
 const Router = () => {
   return <RouterProvider router={router} />;
